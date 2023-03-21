@@ -8,7 +8,7 @@ export class Student{
     @Prop()
     rollNumber:number
     @Prop()
-    class:number
+    Standard:number
     @Prop()
     gender:String
     @Prop()

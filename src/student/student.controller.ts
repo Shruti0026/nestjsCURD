@@ -26,18 +26,23 @@ export class StudentController {
 
 
     @Get()
-        async getStudents(@Res() response){
-            try{
-                const studentData= await this.studentService.getAllStudents();
-                return response.status(HttpStatus.OK).json({
-                    message:'ALl students daat found sucessfully', studentData,
-                })
-            }catch(err){
-                return response.status(err.status).json(err.response);
-            }
+        async getStudents(){
+            return await this.studentService.getAllStudents();
+            // try{
+            //     const studentData= await this.studentService.getAllStudents();
+            //     return response.status(HttpStatus.OK).json({
+            //         message:'ALl students daat found sucessfully', studentData,
+            //     })
+            // }catch(err){
+            //     return response.status(err.status).json(err.response);
+            // }
     }
 
     @Put('/:id')
+    //     async updateStudent(@Res() response, @Param('id') studentId: string,@Body() updateStudentDto:UpdateStudentDto){
+    //         return await this.studentService.updateStudent(studentId,updateStudentDto);
+            
+    // }
         async updateStudent(@Res() response, @Param('id') studentId: string,@Body() updateStudentDto:UpdateStudentDto){
             try{
                 const existingStudent= await this.studentService.updateStudent(studentId,updateStudentDto);
@@ -51,6 +56,9 @@ export class StudentController {
     }
 
     @Get('/:id')
+        // async getStudent(@Res() response, @Param('id') studentId:string){
+        //     return await this.studentService.getStudent(studentId);
+        // }
         async getStudent(@Res() response, @Param('id') studentId:string){
             try{
                 const existingStudent = await this.studentService.getStudent(studentId);
@@ -63,6 +71,9 @@ export class StudentController {
     }
 
     @Delete('/:id')
+        // async deleteStudent(@Res() response, @Param('id') studentId:string) {
+        //     await this.studentService.deleteStudent(studentId)
+        // }
         async deleteStudent (@Res() response, @Param('id') studentId:string){
             try{
                 const deleteStudent = await this.studentService.deleteStudent(studentId)

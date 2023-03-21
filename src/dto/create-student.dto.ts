@@ -13,7 +13,7 @@ export class CreateStudentDto{
 
     @IsNumber()
     @IsNotEmpty()
-    readonly class: number;
+    readonly Standard: number;
 
     @IsString()
     @MaxLength(30)
